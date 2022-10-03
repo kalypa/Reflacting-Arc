@@ -48,8 +48,6 @@ public class AtkBehaviour : GenericBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(state);
-        Debug.Log(isClick);
         if (Input.GetMouseButtonDown(0) && !behaviourManager.GetAnim.GetBool(atkBool) && behaviourManager.GetAnim.GetFloat(speedFloat) < 0.1)
         {
             AtkManagement();
