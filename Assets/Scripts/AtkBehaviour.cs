@@ -11,6 +11,7 @@ public class AtkBehaviour : GenericBehaviour
         Atk2,
         Atk3,
         Atk4,
+        AtkOver
     }
 
     public string atkButton = "Fire1";
@@ -77,13 +78,15 @@ public class AtkBehaviour : GenericBehaviour
         switch (state)
         {
             case AnimationState.None:
-                atk1Effect.SetActive(true);
-                behaviourManager.GetAnim.SetInteger("AtkState", 1);
-                state = AnimationState.Atk1;
+                if (behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Idle") && state != AnimationState.AtkOver)
+                {
+                    atk1Effect.SetActive(true);
+                    behaviourManager.GetAnim.SetInteger("AtkState", 1);
+                    state = AnimationState.Atk1;
+                }
                 break;
             case AnimationState.Atk1:
-                atk1Effect.SetActive(false);
-                if (behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Atk1"))
+                if (behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Atk1") && state != AnimationState.AtkOver)
                 {
                     atk2Effect.SetActive(true);
                     behaviourManager.GetAnim.SetInteger("AtkState", 2);
@@ -91,30 +94,22 @@ public class AtkBehaviour : GenericBehaviour
                 }
                 break;
             case AnimationState.Atk2:
-                atk2Effect.SetActive(false);
-                if (behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Atk2"))
+                if (behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Atk2") && state != AnimationState.AtkOver)
                 {
+                    atk1Effect.SetActive(false);
+                    atk2Effect.SetActive(false);
                     atk3Effect.SetActive(true);
                     behaviourManager.GetAnim.SetInteger("AtkState", 3);
                     state = AnimationState.Atk3;
                 }
                 break;
             case AnimationState.Atk3:
-                atk3Effect.SetActive(false);
-                if (behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Atk3"))
+                if (behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Atk3") && state != AnimationState.AtkOver)
                 {
+                    atk3Effect.SetActive(false);
                     atk4Effect.SetActive(true);
                     behaviourManager.GetAnim.SetInteger("AtkState", 4);
                     state = AnimationState.Atk4;
-                }
-                break;
-            case AnimationState.Atk4:
-                atk4Effect.SetActive(false);
-                if (behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Atk4"))
-                {
-                    atk1Effect.SetActive(true);
-                    behaviourManager.GetAnim.SetInteger("AtkState", 1);
-                    state = AnimationState.Atk1;
                 }
                 break;
         }
