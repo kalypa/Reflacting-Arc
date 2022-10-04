@@ -28,10 +28,13 @@ public class UltBehaviour : GenericBehaviour
     {
         if (!atk && Input.GetButtonDown(atkButton) && !behaviourManager.GetAnim.GetBool(atkBool) && behaviourManager.GetAnim.GetFloat(speedFloat) < 0.1)
         {
-            isAtkCam = true;
-            atk = true;
-            behaviourManager.OverrideWithBehaviour(this);
-            UltManagement();
+            if(behaviourManager.GetAnim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                isAtkCam = true;
+                atk = true;
+                behaviourManager.OverrideWithBehaviour(this);
+                UltManagement();
+            }
         }
     }
 
