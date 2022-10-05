@@ -16,7 +16,7 @@ public class MoveBehaviour : GenericBehaviour
     private int groundedBool;                       // Animator variable related to whether or not the player is on ground.
     private bool jump;                              // Boolean to determine whether or not the player started a jump.
     private bool isColliding;                       // Boolean to determine if the player has collided with an obstacle.
-
+    private AtkBehaviour atkBehaviour;
     // Start is always called after any Awake functions.
     void Start()
     {
@@ -24,7 +24,7 @@ public class MoveBehaviour : GenericBehaviour
         jumpBool = Animator.StringToHash("Jump");
         groundedBool = Animator.StringToHash("Grounded");
         behaviourManager.GetAnim.SetBool(groundedBool, true);
-
+        atkBehaviour = GetComponent<AtkBehaviour>();
         // Subscribe and register this behaviour as the default behaviour.
         behaviourManager.SubscribeBehaviour(this);
         behaviourManager.RegisterDefaultBehaviour(this.behaviourCode);
@@ -100,32 +100,36 @@ public class MoveBehaviour : GenericBehaviour
     // Deal with the basic player movement
     void MovementManagement(float horizontal, float vertical)
     {
-        // On ground, obey gravity.
-        if (behaviourManager.IsGrounded())
-            behaviourManager.GetRigidBody.useGravity = true;
-
-        // Avoid takeoff when reached a slope end.
-        else if (!behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.GetRigidBody.velocity.y > 0)
+        if(speed != 0 && behaviourManager.GetAnim.GetInteger("AtkState") == 0)
         {
-            RemoveVerticalVelocity();
+            atkBehaviour.state = AtkBehaviour.AnimationState.Move;
         }
+            // On ground, obey gravity.
+            if (behaviourManager.IsGrounded())
+                behaviourManager.GetRigidBody.useGravity = true;
 
-        // Call function that deals with player orientation.
-        Rotating(horizontal, vertical);
+            // Avoid takeoff when reached a slope end.
+            else if (!behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.GetRigidBody.velocity.y > 0)
+            {
+                RemoveVerticalVelocity();
+            }
 
-        // Set proper speed.
-        Vector2 dir = new Vector2(horizontal, vertical);
-        speed = Vector2.ClampMagnitude(dir, 1f).magnitude;
-        // This is for PC only, gamepads control speed via analog stick.
-        speedSeeker += Input.GetAxis("Mouse ScrollWheel");
-        speedSeeker = Mathf.Clamp(speedSeeker, walkSpeed, runSpeed);
-        speed *= speedSeeker;
-        if (behaviourManager.IsSprinting())
-        {
-            speed = sprintSpeed;
-        }
+            // Call function that deals with player orientation.
+            Rotating(horizontal, vertical);
 
-        behaviourManager.GetAnim.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
+            // Set proper speed.
+            Vector2 dir = new Vector2(horizontal, vertical);
+            speed = Vector2.ClampMagnitude(dir, 1f).magnitude;
+            // This is for PC only, gamepads control speed via analog stick.
+            speedSeeker += Input.GetAxis("Mouse ScrollWheel");
+            speedSeeker = Mathf.Clamp(speedSeeker, walkSpeed, runSpeed);
+            speed *= speedSeeker;
+            if (behaviourManager.IsSprinting())
+            {
+                speed = sprintSpeed;
+            }
+
+            behaviourManager.GetAnim.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
     }
 
     // Remove vertical rigidbody velocity.

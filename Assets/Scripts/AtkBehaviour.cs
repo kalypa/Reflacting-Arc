@@ -11,6 +11,7 @@ public class AtkBehaviour : GenericBehaviour
         Atk2,
         Atk3,
         Atk4,
+        Move,
         AtkOver
     }
 
@@ -27,11 +28,9 @@ public class AtkBehaviour : GenericBehaviour
     public AnimationState state;
     public bool isAtkCam;
     public bool atk;
-
-
+    public bool isClick = false;
     private int groundedBool;
     private bool isColliding;
-    private bool isClick = false;
     private int atkchanger = 0;
     // Start is called before the first frame update
     void Start()
@@ -48,7 +47,8 @@ public class AtkBehaviour : GenericBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !behaviourManager.GetAnim.GetBool(atkBool) && behaviourManager.GetAnim.GetFloat(speedFloat) < 0.1)
+        Debug.Log(state);
+        if (Input.GetMouseButtonDown(0) && !behaviourManager.GetAnim.GetBool(atkBool) /*&& behaviourManager.GetAnim.GetFloat(speedFloat) < 0.1*/)
         {
             AtkManagement();
             if (!isClick)
@@ -60,7 +60,7 @@ public class AtkBehaviour : GenericBehaviour
         }
     }
     
-    void AtkManagement()
+    public void AtkManagement()
     {
         if (atk && !behaviourManager.GetAnim.GetBool(atkBool) && behaviourManager.IsGrounded())
         {
@@ -71,7 +71,7 @@ public class AtkBehaviour : GenericBehaviour
     {
         behaviourManager.RevokeOverridingBehaviour(this);
     }
-    void AtkStateChange()
+    public void AtkStateChange()
     {
         switch (state)
         {
@@ -108,6 +108,15 @@ public class AtkBehaviour : GenericBehaviour
                     atk4Effect.SetActive(true);
                     behaviourManager.GetAnim.SetInteger("AtkState", 4);
                     state = AnimationState.Atk4;
+                }
+                break;
+            case AnimationState.Move:
+                if (state != AnimationState.AtkOver)
+                {
+                    Debug.Log("Move Atk");
+                    atk1Effect.SetActive(true);
+                    behaviourManager.GetAnim.SetInteger("AtkState", 1);
+                    state = AnimationState.Atk1;
                 }
                 break;
         }
