@@ -76,7 +76,8 @@ public class BasicBehaviour : MonoBehaviour
 		// Set the correct camera FOV for sprint mode.
 		if(IsSprinting())
 		{
-			changedFOV = true;
+            DashManagement();
+            changedFOV = true;
 			camScript.SetFOV(sprintFOV);
 		}
 		else if(changedFOV)
@@ -88,8 +89,12 @@ public class BasicBehaviour : MonoBehaviour
 		anim.SetBool(groundedBool, IsGrounded());
 	}
 
-	// Call the FixedUpdate functions of the active or overriding behaviours.
-	void FixedUpdate()
+    void DashManagement()
+    {
+        GetAnim.SetBool("Dash", true);
+    }
+    // Call the FixedUpdate functions of the active or overriding behaviours.
+    void FixedUpdate()
 	{
 		// Call the active behaviour if no other is overriding.
 		bool isAnyBehaviourActive = false;

@@ -104,34 +104,41 @@ public class MoveBehaviour : GenericBehaviour
         {
             atkBehaviour.state = AtkBehaviour.AnimationState.Move;
         }
-            // On ground, obey gravity.
-            if (behaviourManager.IsGrounded())
-                behaviourManager.GetRigidBody.useGravity = true;
+        // On ground, obey gravity.
+        if (behaviourManager.IsGrounded())
+            behaviourManager.GetRigidBody.useGravity = true;
 
-            // Avoid takeoff when reached a slope end.
-            else if (!behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.GetRigidBody.velocity.y > 0)
-            {
-                RemoveVerticalVelocity();
-            }
+        // Avoid takeoff when reached a slope end.
+        else if (!behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.GetRigidBody.velocity.y > 0)
+        {
+            RemoveVerticalVelocity();
+        }
 
-            // Call function that deals with player orientation.
-            Rotating(horizontal, vertical);
+        // Call function that deals with player orientation.
+        Rotating(horizontal, vertical);
 
-            // Set proper speed.
-            Vector2 dir = new Vector2(horizontal, vertical);
-            speed = Vector2.ClampMagnitude(dir, 1f).magnitude;
-            // This is for PC only, gamepads control speed via analog stick.
-            speedSeeker += Input.GetAxis("Mouse ScrollWheel");
-            speedSeeker = Mathf.Clamp(speedSeeker, walkSpeed, runSpeed);
-            speed *= speedSeeker;
-            if (behaviourManager.IsSprinting())
-            {
-                speed = sprintSpeed;
-            }
-
-            behaviourManager.GetAnim.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
+        // Set proper speed.
+        Vector2 dir = new Vector2(horizontal, vertical);
+        speed = Vector2.ClampMagnitude(dir, 1f).magnitude;
+        // This is for PC only, gamepads control speed via analog stick.
+        speedSeeker += Input.GetAxis("Mouse ScrollWheel");
+        speedSeeker = Mathf.Clamp(speedSeeker, walkSpeed, runSpeed);
+        speed *= speedSeeker;
+        if (behaviourManager.IsSprinting())
+        {
+            speed = sprintSpeed;
+        }
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            DashManagement();
+        }
+        behaviourManager.GetAnim.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
     }
 
+    void DashManagement()
+    {
+        behaviourManager.GetAnim.SetBool("Dash", true);
+    }
     // Remove vertical rigidbody velocity.
     private void RemoveVerticalVelocity()
     {
@@ -189,5 +196,10 @@ public class MoveBehaviour : GenericBehaviour
         isColliding = false;
         GetComponent<CapsuleCollider>().material.dynamicFriction = 0.6f;
         GetComponent<CapsuleCollider>().material.staticFriction = 0.6f;
+    }
+
+    public void DashOver()
+    {
+        behaviourManager.GetAnim.SetBool("Dash", false);
     }
 }
