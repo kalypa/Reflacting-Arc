@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 7398
+  controlID: 8016
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -83,8 +83,8 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 0
-    m_VSlider: 0
+    m_HSlider: 1
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -97,18 +97,18 @@ MonoBehaviour:
       y: 21
       width: 727.6
       height: 392.4
-    m_Scale: {x: 0.45416665, y: 0.45416665}
-    m_Translation: {x: 363.8, y: 196.2}
+    m_Scale: {x: 0.55856764, y: 0.55856764}
+    m_Translation: {x: 369.89783, y: 197.69626}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -801.0275
-      y: -432
-      width: 1602.055
-      height: 864
+      x: -662.22565
+      y: -353.93433
+      width: 1302.6174
+      height: 702.51117
     m_MinimalGUI: 1
   m_defaultScale: 0.45416665
   m_LastWindowPixelSize: {x: 909.5, y: 516.75}
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 7399
+  controlID: 8017
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 7400
+  controlID: 8018
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 7345
+  controlID: 8019
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,10 +249,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
+      scrollPos: {x: 0, y: 167.6}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: cee2f8ff8cfbf9ffcac9faffe637fcff025ffdff3461fdfffefaffffc2660000be680000
+      m_ExpandedIDs: cee2f8ff8cfbf9ffcac9faffe637fcff025ffdff3461fdfffefaffffc2660000be68000002080a00
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 7401
+  controlID: 7964
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -396,22 +396,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Dark City/Demo
+    - Assets/I.L.E.P STUDIOS/Vintage SciFi character Pack VOL1 FemaleAndroid/Characters/FemaleAndroid/Prefap
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Dark City/Demo
+  - Assets/I.L.E.P STUDIOS/Vintage SciFi character Pack VOL1 FemaleAndroid/Characters/FemaleAndroid/Prefap
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\USER\Documents\Reflacting-Arc
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 44.600006}
-    m_SelectedIDs: 60b50900
-    m_LastClickedID: 636256
-    m_ExpandedIDs: 000000006ebf000070bf000072bf000074bf000076bf000078bf00007abf00007cbf00007ebf000080bf0000a6c00000aac0000000ca9a3b
+    scrollPos: {x: 0, y: 88.600006}
+    m_SelectedIDs: 06040f00
+    m_LastClickedID: 984070
+    m_ExpandedIDs: 000000006ebf000070bf000072bf000074bf000076bf000078bf00007abf00007cbf00007ebf000080bf00000e040f0010040f0012040f0014040f0000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -439,7 +439,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006ebf000070bf000072bf000074bf000076bf000078bf00007abf00007cbf00007ebf000080bf0000aac0000000ca9a3b
+    m_ExpandedIDs: 000000006ebf000070bf000072bf000074bf000076bf000078bf00007abf00007cbf00007ebf000080bf0000a6c00000aac0000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -464,24 +464,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: c0ff0600
-    m_LastClickedInstanceID: 458688
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 6680f8ff
+    m_LastClickedInstanceID: -491418
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000b056000028c40000dac2000086c004001275110098c00000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Vintage SciFi character Pack VOL1 FemaleAndroid
+      m_OriginalName: Vintage SciFi character Pack VOL1 FemaleAndroid
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 984078
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
@@ -799,9 +799,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.124403894, y: 0.79006875, z: -0.011049598}
+    m_Target: {x: 0.5159919, y: 1.7481778, z: -1.8458617}
     speed: 2
-    m_Value: {x: -0.124403894, y: 0.79006875, z: -0.011049598}
+    m_Value: {x: 0.5159919, y: 1.7481778, z: -1.8458617}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -848,13 +848,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.19385459, y: 0.66529816, z: -0.18534766, w: -0.6968363}
+    m_Target: {x: -0.027958669, y: 0.97128004, z: -0.18431675, w: -0.14831477}
     speed: 2
-    m_Value: {x: -0.19384144, y: 0.66525304, z: -0.18533508, w: -0.696789}
+    m_Value: {x: -0.02795676, y: 0.9712137, z: -0.18430416, w: -0.14830464}
   m_Size:
-    m_Target: 0.6861283
+    m_Target: 0.24873394
     speed: 2
-    m_Value: 0.6861283
+    m_Value: 0.24873394
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1091,7 +1091,7 @@ MonoBehaviour:
     m_CachedPref: 151
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 458688
+  m_LastInspectedObjectInstanceID: -491418
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
