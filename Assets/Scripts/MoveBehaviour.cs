@@ -39,6 +39,7 @@ public class MoveBehaviour : GenericBehaviour
         {
             jump = true;
         }
+        Smile();
     }
 
     // LocalFixedUpdate overrides the virtual function of the base class.
@@ -128,16 +129,19 @@ public class MoveBehaviour : GenericBehaviour
         {
             speed = sprintSpeed;
         }
-        if(Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            DashManagement();
-        }
         behaviourManager.GetAnim.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
     }
 
-    void DashManagement()
+    void Smile()
     {
-        behaviourManager.GetAnim.SetBool("Dash", true);
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            behaviourManager.GetAnim.SetBool("Smile", true);
+        }
+    }
+    public void SmileEnd()
+    {
+        behaviourManager.GetAnim.SetBool("Smile", false);
     }
     // Remove vertical rigidbody velocity.
     private void RemoveVerticalVelocity()

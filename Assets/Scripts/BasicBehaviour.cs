@@ -27,7 +27,7 @@ public class BasicBehaviour : MonoBehaviour
 	private Rigidbody rBody;                              // Reference to the player's rigidbody.
 	private int groundedBool;                             // Animator variable related to whether or not the player is on the ground.
 	private Vector3 colExtents;                           // Collider extents for ground test. 
-
+	private bool isClicked;
 	// Get current horizontal and vertical axes.
 	public float GetH { get { return h; } }
 	public float GetV { get { return v; } }
@@ -62,6 +62,7 @@ public class BasicBehaviour : MonoBehaviour
 
 	void Update()
 	{
+		Debug.Log(isClicked);
 		// Store the input axes.
 		h = Input.GetAxis("Horizontal");
 		v = Input.GetAxis("Vertical");
@@ -71,18 +72,23 @@ public class BasicBehaviour : MonoBehaviour
 		anim.SetFloat(vFloat, v, 0.1f, Time.deltaTime);
 
 		// Toggle sprint by input.
-		sprint = Input.GetButton (sprintButton);
+		sprint = Input.GetButtonDown (sprintButton);
 
 		// Set the correct camera FOV for sprint mode.
 		if(IsSprinting())
 		{
-            DashManagement();
-            changedFOV = true;
-			camScript.SetFOV(sprintFOV);
-		}
+			if(isClicked == false)
+			{
+                DashManagement();
+                isClicked = true;
+                changedFOV = true;
+                camScript.SetFOV(sprintFOV);
+            }
+        }
 		else if(changedFOV)
 		{
-			camScript.ResetFOV();
+            Invoke("DashDelay", 1f);
+            camScript.ResetFOV();
 			changedFOV = false;
 		}
 		// Set the grounded test on the Animator Controller.
@@ -91,7 +97,18 @@ public class BasicBehaviour : MonoBehaviour
 
     void DashManagement()
     {
-        GetAnim.SetBool("Dash", true);
+		if(isClicked == false)
+		{
+            GetAnim.SetBool("Dash", true);
+        }
+		else
+		{
+			return;
+		}
+    }
+	void DashDelay()
+	{
+		isClicked = false;
     }
     // Call the FixedUpdate functions of the active or overriding behaviours.
     void FixedUpdate()
