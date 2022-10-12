@@ -37,7 +37,8 @@ public class MoveBehaviour : GenericBehaviour
         // Get jump input.
         if (!jump && Input.GetButtonDown(jumpButton) && behaviourManager.IsCurrentBehaviour(this.behaviourCode) && !behaviourManager.IsOverriding())
         {
-            jump = true;
+            if(behaviourManager.IsGrounded())
+                jump = true;
         }
         Smile();
     }
